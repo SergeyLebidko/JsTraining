@@ -33,7 +33,6 @@ class Order(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE, verbose_name='Клиент')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Товар')
     count = models.IntegerField(verbose_name='Количество')
-    dt_create = models.DateField(verbose_name='Дата заказа')
 
     def __str__(self):
         return f'Заказ клиента: {self.client} от: {self.dt_create} на товар: {self.product} количество: {self.count}'

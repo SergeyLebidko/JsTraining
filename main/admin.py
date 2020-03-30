@@ -17,6 +17,6 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Order)
 class Order(admin.ModelAdmin):
-    list_display = ('client', 'product', 'count', 'dt_create')
+    list_display = ('client', 'product', 'count')
     list_display_links = ('client', 'product')
     raw_id_fields = ('client', 'product')
