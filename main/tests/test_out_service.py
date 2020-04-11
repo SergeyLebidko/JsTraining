@@ -1,11 +1,22 @@
 from django.test import TestCase
 from rest_framework.test import APIClient
-from unittest.mock import patch
+from unittest.mock import patch, Mock
 from django.urls import reverse
 
 
-def fake_request():
-    return [{'name': 'Фейковое имя', 'address': {'city': 'Фейковый город'}}]
+def fake_request(url):
+    print(f'Произошло обращение на URL: {url}')
+    response = Mock()
+    response.status_code = 200
+    response.json.return_value = [
+        {
+            'name': 'Фейковое имя',
+            'address': {
+                'city': 'Фейковый город'
+            }
+        }
+    ]
+    return response
 
 
 class OutServiceTest(TestCase):
@@ -13,7 +24,7 @@ class OutServiceTest(TestCase):
     def setUp(self):
         self.client = APIClient()
 
-    @patch('main.views.send_request', fake_request)
+    @patch('main.utils.transport.requests.get', fake_request)
     def test_out_service(self):
         url = reverse('out_service')
         resp = self.client.get(url)
