@@ -35,11 +35,10 @@ class Order(models.Model):
     count = models.IntegerField(verbose_name='Количество')
 
     def __str__(self):
-        return f'Заказ клиента: {self.client} от: {self.dt_create} на товар: {self.product} количество: {self.count}'
-
-    def delete(self, using=None, keep_parents=False):
-        print(f'Вызван метод delete для заказа: {self}')
-        super(Order, self).delete(using=None, keep_parents=False)
+        c = f'Клиент: {str(self.client).ljust(20, " ")}'
+        p = f'Товар: {str(self.product).ljust(20, " ")}'
+        cnt = f'Количество: {self.count}'
+        return f'{c} {p} {cnt}'
 
     class Meta:
         verbose_name = 'Заказ'
