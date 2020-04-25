@@ -1,10 +1,8 @@
-var txt = 'Глобальная переменная';
-
-document.write('<br>' + txt + '<br>');
-show();
-document.write(txt + '<br>');
-
-function show() {
-    txt = 'Локальная переменная';
-    document.write(txt + '<br>');
+function Person(name, age, gender) {
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
 }
+
+a = new Person('Сергей', 35, 'male');
+b = new Person('Юлия', 33, 'female');
