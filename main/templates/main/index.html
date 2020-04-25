@@ -7,4 +7,25 @@
             <script type="text/javascript" src="../../static/main/hello.js"></script>
         </p>
     </div>
+    <br>
+
+    <div class="basic_block">
+        {% for client in clients %}
+            {{ client }}<br>
+        {% endfor %}
+    </div>
+    <br>
+
+    <div class="basic_block">
+        {% for product in products %}
+            {{ product }}<br>
+        {% endfor %}
+    </div>
+    <br>
+
+    <div class="basic_block">
+        {% for order in orders %}
+            {{ order }}<br>
+        {% endfor %}
+    </div>
 {% endblock %}
