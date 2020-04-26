@@ -1,10 +1,13 @@
 {% extends 'layout/base.html' %}
 
 {% block content %}
+    <script type="text/javascript" src="../../static/main/hello.js"></script>
+
     <div class="basic_block">
         <p>
-            Главная страница
-            <script type="text/javascript" src="../../static/main/hello.js"></script>
+            <a class="btn_ref" href="{% url 'index' %}">Клиенты</a>
+            <a class="btn_ref" href="{% url 'index' %}">Товары</a>
+            <a class="btn_ref" href="{% url 'index' %}">Заказы</a>
         </p>
     </div>
     <br>

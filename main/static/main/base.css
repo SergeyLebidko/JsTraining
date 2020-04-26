@@ -10,3 +10,21 @@
     width: 80%;
     overflow: hidden;
 }
+
+a.btn_ref {
+  color: #fff; /* цвет текста */
+  text-decoration: none; /* убирать подчёркивание у ссылок */
+  user-select: none; /* убирать выделение текста */
+  background: rgb(120, 150, 150); /* фон кнопки */
+  padding: .7em 1.5em; /* отступ от текста */
+  outline: none; /* убирать контур в Mozilla */
+  border-radius: 5px;
+}
+
+a.btn_ref:hover {
+    background: rgb(232,95,76);
+}
+
+a.btn_ref:active {
+    background: rgb(152,15,0);
+}
