@@ -9,23 +9,56 @@
     </div>
     <br>
 
-    <div class="basic_block">
-        {% for client in clients %}
-            {{ client }}<br>
-        {% endfor %}
+    <div class="basic_block" id="client_div">
+        <table>
+            <tr>
+                <th>Имя клиента</th>
+                <th>Кредитный лимит</th>
+                <th>VIP-статус</th>
+            </tr>
+            {% for client in clients %}
+                <tr>
+                    <td>{{ client.title }}</td>
+                    <td>{{ client.credit_limit }}</td>
+                    <td>{{ client.vip }}</td>
+                </tr>
+            {% endfor %}
+        </table>
     </div>
     <br>
 
-    <div class="basic_block">
-        {% for product in products %}
-            {{ product }}<br>
-        {% endfor %}
+    <div class="basic_block" id="product_div">
+        <table>
+            <tr>
+                <th>Наименование товара</th>
+                <th>Остаток</th>
+                <th>Цена</th>
+            </tr>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.title }}</td>
+                    <td>{{ product.balance }}</td>
+                    <td>{{ product.price }}</td>
+                </tr>
+            {% endfor %}
+        </table>
     </div>
     <br>
 
-    <div class="basic_block">
-        {% for order in orders %}
-            {{ order }}<br>
-        {% endfor %}
+    <div class="basic_block" id="order_div">
+        <table>
+            <tr>
+                <th>Клиент</th>
+                <th>Товар</th>
+                <th>Количество</th>
+            </tr>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.client.title }}</td>
+                    <td>{{ order.product.title }}</td>
+                    <td>{{ order.count }}</td>
+                </tr>
+            {% endfor %}
+        </table>
     </div>
 {% endblock %}
