@@ -1,5 +1,4 @@
-/* Основной блок */
-.basic_block {
+.header_block {
     font-size: large;
     background-color: RGB(240, 240, 240);
     border: 2px solid RGB(220, 220, 220);
@@ -11,14 +10,38 @@
     overflow: hidden;
 }
 
-a.btn_ref {
-    color: #fff; /* цвет текста */
-    text-decoration: none; /* убирать подчёркивание у ссылок */
-    user-select: none; /* убирать выделение текста */
-    background: rgb(120, 150, 150); /* фон кнопки */
-    padding: .7em 1.5em; /* отступ от текста */
-    outline: none; /* убирать контур в Mozilla */
+.table_block {
+    font-size: large;
+    background-color: RGB(240, 240, 240);
+    border: 2px solid RGB(220, 220, 220);
     border-radius: 5px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    overflow: hidden;
+    display: none;
+}
+
+button {
+    background-color: #6390af;
+    font-size: medium;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+button:hover {
+    background-color: #78a5c3;
+}
+
+button:active {
+    background-color: #3d7dc8;
+    transform: translate3d(2px, 2px, 2px);
 }
 
 a.btn_ref:hover {
@@ -30,15 +53,13 @@ a.btn_ref:active {
 }
 
 table {
-    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-    font-size: 14px;
-    border-radius: 10px;
+    border-radius: 5px;
     border-spacing: 0;
     text-align: center;
 }
 
 th {
-    background: #BCEBDD;
+    background: #aaaaaa;
     color: black;
     padding: 5px 10px;
 }
@@ -64,7 +85,7 @@ th:last-child {
 
 td {
     padding: 5px 10px;
-    background: #F8E391;
+    background: #d2d2d2;
 }
 
 tr:last-child td:first-child {

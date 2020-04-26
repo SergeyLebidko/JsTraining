@@ -3,16 +3,16 @@
 {% block content %}
     <script type="text/javascript" src="../../static/main/hello.js"></script>
 
-    <div class="basic_block">
+    <div class="header_block">
         <p>
-            <a class="btn_ref" href="{% url 'index' %}">Клиенты</a>
-            <a class="btn_ref" href="{% url 'index' %}">Товары</a>
-            <a class="btn_ref" href="{% url 'index' %}">Заказы</a>
+            <button id="client_btn">Клиенты</button>
+            <button id="product_btn">Товары</button>
+            <button id="order_btn">Заказы</button>
         </p>
     </div>
     <br>
 
-    <div class="basic_block" id="client_div">
+    <div class="table_block" id="client_div">
         <table>
             <tr>
                 <th>Имя клиента</th>
@@ -23,14 +23,18 @@
                 <tr>
                     <td>{{ client.title }}</td>
                     <td>{{ client.credit_limit }}</td>
-                    <td>{{ client.vip }}</td>
+                    <td>
+                        {% if client.vip %}
+                            *
+                        {% endif %}
+                    </td>
                 </tr>
             {% endfor %}
         </table>
     </div>
     <br>
 
-    <div class="basic_block" id="product_div">
+    <div class="table_block" id="product_div">
         <table>
             <tr>
                 <th>Наименование товара</th>
@@ -48,7 +52,7 @@
     </div>
     <br>
 
-    <div class="basic_block" id="order_div">
+    <div class="table_block" id="order_div">
         <table>
             <tr>
                 <th>Клиент</th>
