@@ -1,9 +1,7 @@
 {% extends 'layout/base.html' %}
 
 {% block content %}
-    <script type="text/javascript" src="../../static/main/hello.js"></script>
-
-    <div class="header_block">
+    <div class="basic_block">
         <p>
             <button id="client_btn">Клиенты</button>
             <button id="product_btn">Товары</button>
@@ -12,7 +10,7 @@
     </div>
     <br>
 
-    <div class="table_block" id="client_div">
+    <div class="basic_block" style="display: none;" id="client_div">
         <table>
             <tr>
                 <th>Имя клиента</th>
@@ -34,7 +32,7 @@
     </div>
     <br>
 
-    <div class="table_block" id="product_div">
+    <div class="basic_block" style="display: none;" id="product_div">
         <table>
             <tr>
                 <th>Наименование товара</th>
@@ -52,7 +50,7 @@
     </div>
     <br>
 
-    <div class="table_block" id="order_div">
+    <div class="basic_block" style="display: none;" id="order_div">
         <table>
             <tr>
                 <th>Клиент</th>
@@ -68,4 +66,5 @@
             {% endfor %}
         </table>
     </div>
+
 {% endblock %}

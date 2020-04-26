@@ -6,8 +6,9 @@
     <link href="{% static 'main/base.css' %}" rel="stylesheet">
     <meta charset="UTF-8">
     <title>JsTraining</title>
+    <script src="{% static 'main/hello.js' %}"></script>
 </head>
-<body>
+<body onload="start()">
     {% block content %}
     {% endblock %}
 </body>
