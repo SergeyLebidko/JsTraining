@@ -3,24 +3,26 @@ function start() {
     let productBtn = document.getElementById('product_btn');
     let orderBtn = document.getElementById('order_btn');
 
+    let clientDiv = document.getElementById('client_div');
+    let productDiv = document.getElementById('product_div');
+    let orderDiv = document.getElementById('order_div');
+
     clientBtn.onclick = function (el) {
-        change_display('client_div')
+        clientDiv.style.display = 'block';
+        productDiv.style.display = 'none';
+        orderDiv.style.display = 'none';
     };
 
     productBtn.onclick = function (el) {
-        change_display('product_div')
+        clientDiv.style.display = 'none';
+        productDiv.style.display = 'block';
+        orderDiv.style.display = 'none';
     };
 
     orderBtn.onclick = function (el) {
-        change_display('order_div')
+        clientDiv.style.display = 'none';
+        productDiv.style.display = 'none';
+        orderDiv.style.display = 'block';
     };
 
-    function change_display(id) {
-        let display = document.getElementById(id).style.display;
-        if (display == 'none') {
-             document.getElementById(id).style.display = 'block';
-        } else {
-            document.getElementById(id).style.display = 'none';
-        }
-    }
 }

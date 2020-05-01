@@ -6,6 +6,7 @@ from main.models import Client, Order, Product
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
+        random.seed()
         client_titles = ['Танос', 'Тони Старк', 'Бэтмен', 'Супермен', 'Капитан Америка', 'Тор', 'Грут']
         product_titles = ['Монитор', 'Жесткий диск', 'Блок питания', 'Видеокарта', 'Процессор', 'Оперативная память']
 
