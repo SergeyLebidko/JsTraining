@@ -2,6 +2,7 @@ function start() {
     let clientBtn = document.getElementById('client_btn');
     let productBtn = document.getElementById('product_btn');
     let orderBtn = document.getElementById('order_btn');
+    let statBtn = document.getElementById('stat_btn');
 
     let clientDiv = document.getElementById('client_div');
     let productDiv = document.getElementById('product_div');
@@ -25,4 +26,7 @@ function start() {
         orderDiv.style.display = 'block';
     };
 
+    statBtn.onclick = function (el) {
+        alert('Запрошена статистика!')
+    };
 }
