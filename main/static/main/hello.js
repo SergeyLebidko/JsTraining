@@ -32,12 +32,39 @@ function start() {
 
     function refresh_stat(data, status) {
         let stat = eval(data);
-        manageDiv = document.getElementById('manage_div');
 
-        statDiv = document.createElement('div');
-        statDiv.className = 'basic_block';
-        statDiv.innerHTML = '<h1>Получилось!</h1>';
+        statDiv = document.getElementById('stat_div');
+        if (statDiv == null) {
+            manageDiv = document.getElementById('manage_div');
+            statDiv = document.createElement('div');
+            statDiv.id = 'stat_div';
+            statDiv.className = 'basic_block';
+            statDiv.innerHTML = statTableGenerator(stat);
+            manageDiv.after(statDiv)
+        } else {
+            statDiv.innerHTML = statTableGenerator(stat);
+        }
+    }
 
-        manageDiv.after(document.createElement('br'), statDiv)
+    function statTableGenerator(statObj) {
+        data = statObj.stat;
+        description = statObj.description;
+
+        let tableArr = ['<table>'];
+
+        tableArr.push('<tr>');
+        for(let key in data){
+            tableArr.push('<th>' + description[key] + '</th>')
+        }
+        tableArr.push('</tr>');
+
+        tableArr.push('<tr>');
+        for(let key in data){
+            tableArr.push('<td style="text-align: center">' + data[key] + '</td>')
+        }
+        tableArr.push('</tr>');
+
+        tableArr.push('</table>');
+        return tableArr.join('');
     }
 }

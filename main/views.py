@@ -4,6 +4,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
+stat_counter = 0
+
 
 def index(request):
     """Контроллер главной страницы"""
@@ -15,7 +17,7 @@ def index(request):
     context = {
         'clients': clients,
         'products': products,
-        'orders': orders
+        'orders': orders,
     }
     return render(request, 'main/index.html', context=context)
 
@@ -26,10 +28,22 @@ def stat(request):
     product_count = Product.objects.all().count()
     order_count = Order.objects.all().count()
 
-    data = {
-        'client_count': client_count,
-        'product_count': product_count,
-        'order_count': order_count
-    }
+    global stat_counter
+    stat_counter += 1
 
+    data = {
+        'stat': {
+            'client_count': client_count,
+            'product_count': product_count,
+            'order_count': order_count,
+            'stat_counter': stat_counter
+        },
+        'description': {
+            'client_count': 'Количество клиентов',
+            'product_count': 'Количество товаров',
+            'order_count': 'Количество заказов',
+            'stat_counter': 'Запросов статистики'
+        }
+
+    }
     return Response(data, status=status.HTTP_200_OK)
