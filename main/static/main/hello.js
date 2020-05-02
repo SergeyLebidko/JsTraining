@@ -27,6 +27,17 @@ function start() {
     };
 
     statBtn.onclick = function (el) {
-        alert('Запрошена статистика!')
+        $.get('/main/stat/', {}, refresh_stat)
     };
+
+    function refresh_stat(data, status) {
+        let stat = eval(data);
+        manageDiv = document.getElementById('manage_div');
+
+        statDiv = document.createElement('div');
+        statDiv.className = 'basic_block';
+        statDiv.innerHTML = '<h1>Получилось!</h1>';
+
+        manageDiv.after(document.createElement('br'), statDiv)
+    }
 }
