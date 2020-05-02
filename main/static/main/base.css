@@ -31,14 +31,6 @@ button:active {
     transform: translate3d(2px, 2px, 2px);
 }
 
-a.btn_ref:hover {
-    background: rgb(232, 95, 76);
-}
-
-a.btn_ref:active {
-    background: rgb(152, 15, 0);
-}
-
 table {
     border-radius: 5px;
     border-spacing: 0;
