@@ -1,0 +1,21 @@
+{% extends 'layout/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="basic_block">
+        <select name="client" id="client_selector">
+            {% for client in clients %}
+                <option value="{{ client.pk }}">{{ client.title }}</option>
+            {% endfor %}
+        </select>
+        <select name="product" id="product_selector">
+            {% for product in products %}
+                <option value="{{ product.pk }}">{{ product.title }}</option>
+            {% endfor %}
+        </select>
+        <input type="text" id="count_field" size="5" value="1" style="text-align: right">
+        <button id="send_btn">Отправить</button>
+        {% csrf_token %}
+    </div>
+    <script src="{% static 'main/add_order.js' %}"></script>
+{% endblock %}

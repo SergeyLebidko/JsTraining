@@ -3,9 +3,10 @@ from .models import Client, Order, Product
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotAllowed
 from django.template.loader import get_template
 from django.db.models import Sum, F
+
 
 stat_counter = 0
 
@@ -29,6 +30,21 @@ def report_1(request):
 
 def report_2(request):
     return render(request, 'main/report_2.html', context={})
+
+
+def add_order(request):
+    if request.method == 'GET':
+        clients = Client.objects.all()
+        products = Product.objects.all()
+        context = {
+            'clients': clients,
+            'products': products
+        }
+        return render(request, 'main/add_order.html', context=context)
+    elif request.method == 'POST':
+        return HttpResponse('added')
+
+    return HttpResponseNotAllowed(['GET', 'POST'])
 
 
 def simple_html_report(request):
