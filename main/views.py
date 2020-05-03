@@ -24,6 +24,10 @@ def report_1(request):
     return render(request, 'main/report_1.html', context=context)
 
 
+def report_2(request):
+    return render(request, 'main/report_2.html', context={})
+
+
 @api_view(['GET'])
 def simple_rest_report(request):
     client_count = Client.objects.all().count()
