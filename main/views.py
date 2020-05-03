@@ -42,7 +42,15 @@ def add_order(request):
         }
         return render(request, 'main/add_order.html', context=context)
     elif request.method == 'POST':
-        return HttpResponse('added')
+        client_id = request.POST.get('client_id')
+        product_id = request.POST.get('product_id')
+        count = request.POST.get('count')
+        Order.objects.create(
+            product_id=product_id,
+            client_id=client_id,
+            count=count
+        )
+        return HttpResponse('Заказ успешно добавлен')
 
     return HttpResponseNotAllowed(['GET', 'POST'])
 

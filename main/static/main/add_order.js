@@ -27,5 +27,5 @@ function send_order(el) {
 };
 
 function sendResult(data, status) {
-    alert('Заказ добавлен')
+    alert(data)
 }
