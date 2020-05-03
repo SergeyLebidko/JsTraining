@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.http import HttpResponse
 from django.template.loader import get_template
+from django.db.models import Sum, F
 
 stat_counter = 0
 
@@ -36,10 +37,24 @@ def simple_html_report(request):
     products_count = Product.objects.count()
     orders_count = Order.objects.count()
 
+    # Клиенты, количество заказанных ими товаров и их стоимость
+    order_report = Order.objects.values(
+        'client__title',
+        'product__title'
+    ).order_by(
+        'client__title',
+        'product__title'
+    ).annotate(product_count=Sum('count'), total_cost=Sum(F('count')*F('product__price')))
+
+    global stat_counter
+    stat_counter += 1
+
     context = {
         'clients_count': clients_count,
         'products_count': products_count,
-        'orders_count': orders_count
+        'orders_count': orders_count,
+        'order_report': order_report,
+        'stat_counter': stat_counter
     }
     template = get_template('main/html_report_template.html')
     return HttpResponse(template.render(context=context, request=request))

@@ -1,13 +1,33 @@
 <p>
-    <table>
+<h5>Запросов статистики: {{ stat_counter }}</h5>
+<h4>Общее количество:</h4>
+<table>
+    <tr>
+        <td>Клиентов</td>
+        <td>{{ clients_count }}</td>
+    </tr>
+    <tr>
+        <td>Товаров</td>
+        <td>{{ products_count }}</td>
+    </tr>
+    <tr>
+        <td>Заказов</td>
+        <td>{{ orders_count }}</td>
+    </tr>
+</table>
+
+<h4>Клиенты, количество заказанных ими товаров и их стоимость:</h4>
+<table>
+    <tr>
+        <th>Клиент</th><th>Товар</th><th>Заказано едениц</th><th>Сумма заказа</th>
+    </tr>
+    {% for order_element in order_report %}
         <tr>
-            <td>Количество клиентов</td><td>{{ clients_count }}</td>
+            <td>{{ order_element.client__title }}</td>
+            <td style="text-align: left">{{ order_element.product__title }}</td>
+            <td>{{ order_element.product_count }}</td>
+            <td>{{ order_element.total_cost }}</td>
         </tr>
-        <tr>
-            <td>Количество товаров</td><td>{{ products_count }}</td>
-        </tr>
-        <tr>
-            <td>Количество заказов</td><td>{{ orders_count }}</td>
-        </tr>
-    </table>
+    {% endfor %}
+</table>
 </p>
