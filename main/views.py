@@ -8,8 +8,10 @@ stat_counter = 0
 
 
 def index(request):
-    """Контроллер главной страницы"""
+    return render(request, 'main/index.html', context={})
 
+
+def report_1(request):
     clients = Client.objects.all()
     products = Product.objects.all()
     orders = Order.objects.all()
@@ -19,11 +21,11 @@ def index(request):
         'products': products,
         'orders': orders,
     }
-    return render(request, 'main/index.html', context=context)
+    return render(request, 'main/report_1.html', context=context)
 
 
 @api_view(['GET'])
-def stat(request):
+def simple_rest_report(request):
     client_count = Client.objects.all().count()
     product_count = Product.objects.all().count()
     order_count = Order.objects.all().count()

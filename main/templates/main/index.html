@@ -1,71 +1,12 @@
 {% extends 'layout/base.html' %}
 
 {% block content %}
-    <div class="basic_block" id="manage_div">
+    <div class="basic_block">
         <p>
-            <button id="stat_btn">Запросить статистику</button>
-            <button id="client_btn">Клиенты</button>
-            <button id="product_btn">Товары</button>
-            <button id="order_btn">Заказы</button>
+            Страница статистики. Изменение видимости div с помощью манипуляций с атрибутом display.
+            Получение простого отчета по содержимому БД с помощью jQuery ajax get. Динамическое
+            создание и отображение div и таблицы с отчетом.
+            <br><br><a href="{% url 'report_1' %}">Перейти</a>
         </p>
     </div>
-
-    <div class="basic_block" style="display: none;" id="client_div">
-        <h3>Клиенты</h3>
-        <table>
-            <tr>
-                <th>Имя клиента</th>
-                <th>Кредитный лимит</th>
-                <th>VIP-статус</th>
-            </tr>
-            {% for client in clients %}
-                <tr>
-                    <td>{{ client.title }}</td>
-                    <td>{{ client.credit_limit }}</td>
-                    <td>
-                        {% if client.vip %}
-                            *
-                        {% endif %}
-                    </td>
-                </tr>
-            {% endfor %}
-        </table>
-    </div>
-
-    <div class="basic_block" style="display: none;" id="product_div">
-        <h3>Товары</h3>
-        <table>
-            <tr>
-                <th>Наименование товара</th>
-                <th>Остаток</th>
-                <th>Цена</th>
-            </tr>
-            {% for product in products %}
-                <tr>
-                    <td>{{ product.title }}</td>
-                    <td>{{ product.balance }}</td>
-                    <td>{{ product.price }}</td>
-                </tr>
-            {% endfor %}
-        </table>
-    </div>
-
-    <div class="basic_block" style="display: none;" id="order_div">
-        <h3>Заказы</h3>
-        <table>
-            <tr>
-                <th>Клиент</th>
-                <th>Товар</th>
-                <th>Количество</th>
-            </tr>
-            {% for order in orders %}
-                <tr>
-                    <td>{{ order.client.title }}</td>
-                    <td>{{ order.product.title }}</td>
-                    <td>{{ order.count }}</td>
-                </tr>
-            {% endfor %}
-        </table>
-    </div>
-
 {% endblock %}

@@ -34,6 +34,14 @@ table {
     text-align: center;
 }
 
+a {
+    padding: 5px;
+    text-decoration: none;
+    background-color: #d2d2d2;
+    border-radius: 2px;
+    color: black;
+}
+
 th {
     background: #aaaaaa;
     color: black;

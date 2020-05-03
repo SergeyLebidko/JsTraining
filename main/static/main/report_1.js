@@ -27,7 +27,7 @@ function start() {
     };
 
     statBtn.onclick = function (el) {
-        $.get('/main/stat/', {}, refresh_stat)
+        $.get('/main/simple_rest_report/', {}, refresh_stat)
     };
 
     function refresh_stat(data, status) {
@@ -47,8 +47,8 @@ function start() {
     }
 
     function statTableGenerator(statObj) {
-        data = statObj.stat;
-        description = statObj.description;
+        let data = statObj.stat;
+        let description = statObj.description;
 
         let tableArr = ['<table>'];
 

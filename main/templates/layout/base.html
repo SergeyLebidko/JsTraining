@@ -6,10 +6,12 @@
     <link href="{% static 'main/base.css' %}" rel="stylesheet">
     <meta charset="UTF-8">
     <title>JsTraining</title>
-    <script src="{% static 'main/hello.js' %}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body onload="start()">
+    <div class="basic_block">
+        <a href="{% url 'index' %}">Главная страница</a>
+    </div>
     {% block content %}
     {% endblock %}
 </body>
