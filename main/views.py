@@ -3,6 +3,8 @@ from .models import Client, Order, Product
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from django.http import HttpResponse
+from django.template.loader import get_template
 
 stat_counter = 0
 
@@ -26,6 +28,21 @@ def report_1(request):
 
 def report_2(request):
     return render(request, 'main/report_2.html', context={})
+
+
+def simple_html_report(request):
+    # Количество клиентов/товаров/заказов
+    clients_count = Client.objects.count()
+    products_count = Product.objects.count()
+    orders_count = Order.objects.count()
+
+    context = {
+        'clients_count': clients_count,
+        'products_count': products_count,
+        'orders_count': orders_count
+    }
+    template = get_template('main/html_report_template.html')
+    return HttpResponse(template.render(context=context, request=request))
 
 
 @api_view(['GET'])
