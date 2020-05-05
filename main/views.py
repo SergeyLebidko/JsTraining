@@ -109,3 +109,7 @@ def simple_rest_report(request):
 
     }
     return Response(data, status=status.HTTP_200_OK)
+
+
+def inline_block_demo(request):
+    return render(request, 'main/inline_block_demo.html', context={})
