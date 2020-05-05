@@ -43,7 +43,7 @@ class Command(BaseCommand):
             Order.objects.create(
                 client=client,
                 product=product,
-                count=random.randint(1, 10)
+                count=random.randint(1, 15)
             )
 
         print('Заполнение завершено...')
