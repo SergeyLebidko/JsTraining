@@ -6,6 +6,11 @@ class Client(models.Model):
     credit_limit = models.IntegerField(verbose_name='Кредитный лимит')
     vip = models.BooleanField(verbose_name='VIP-клиент', default=False)
 
+    @property
+    def is_marvel(self):
+        client_titles = ['Танос', 'Тони Старк', 'Капитан Америка', 'Тор', 'Грут']
+        return self.title in client_titles
+
     def __str__(self):
         return self.title
 
