@@ -3,11 +3,15 @@ from django.core.management.base import BaseCommand
 from main.models import Client, Order, Product
 
 
+MARVEL = ['Танос', 'Тони Старк', 'Капитан Америка', 'Тор', 'Грут']
+DC = ['Бэтмен', 'Супермен']
+
+
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
         random.seed()
-        client_titles = ['Танос', 'Тони Старк', 'Бэтмен', 'Супермен', 'Капитан Америка', 'Тор', 'Грут']
+        client_titles = MARVEL + DC
         product_titles = ['Монитор', 'Жесткий диск', 'Блок питания', 'Видеокарта', 'Процессор', 'Оперативная память']
 
         print('Удаляю старые данные...')
@@ -39,7 +43,7 @@ class Command(BaseCommand):
             Order.objects.create(
                 client=client,
                 product=product,
-                count=random.randint(1, 10)
+                count=random.randint(1, 15)
             )
 
         print('Заполнение завершено...')
