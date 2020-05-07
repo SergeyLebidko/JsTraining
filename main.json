@@ -1,0 +1,390 @@
+Tracking file by folder pattern:  migrations
+[
+{
+  "model": "main.client",
+  "pk": 43,
+  "fields": {
+    "title": "\u0422\u0430\u043d\u043e\u0441",
+    "credit_limit": 3295,
+    "vip": true
+  }
+},
+{
+  "model": "main.client",
+  "pk": 44,
+  "fields": {
+    "title": "\u0422\u043e\u043d\u0438 \u0421\u0442\u0430\u0440\u043a",
+    "credit_limit": 9549,
+    "vip": true
+  }
+},
+{
+  "model": "main.client",
+  "pk": 45,
+  "fields": {
+    "title": "\u041a\u0430\u043f\u0438\u0442\u0430\u043d \u0410\u043c\u0435\u0440\u0438\u043a\u0430",
+    "credit_limit": 5138,
+    "vip": false
+  }
+},
+{
+  "model": "main.client",
+  "pk": 46,
+  "fields": {
+    "title": "\u0422\u043e\u0440",
+    "credit_limit": 1940,
+    "vip": false
+  }
+},
+{
+  "model": "main.client",
+  "pk": 47,
+  "fields": {
+    "title": "\u0413\u0440\u0443\u0442",
+    "credit_limit": 5793,
+    "vip": true
+  }
+},
+{
+  "model": "main.client",
+  "pk": 48,
+  "fields": {
+    "title": "\u0411\u044d\u0442\u043c\u0435\u043d",
+    "credit_limit": 7775,
+    "vip": false
+  }
+},
+{
+  "model": "main.client",
+  "pk": 49,
+  "fields": {
+    "title": "\u0421\u0443\u043f\u0435\u0440\u043c\u0435\u043d",
+    "credit_limit": 2096,
+    "vip": true
+  }
+},
+{
+  "model": "main.product",
+  "pk": 37,
+  "fields": {
+    "title": "\u041c\u043e\u043d\u0438\u0442\u043e\u0440",
+    "balance": 579,
+    "price": 690
+  }
+},
+{
+  "model": "main.product",
+  "pk": 38,
+  "fields": {
+    "title": "\u0416\u0435\u0441\u0442\u043a\u0438\u0439 \u0434\u0438\u0441\u043a",
+    "balance": 910,
+    "price": 2457
+  }
+},
+{
+  "model": "main.product",
+  "pk": 39,
+  "fields": {
+    "title": "\u0411\u043b\u043e\u043a \u043f\u0438\u0442\u0430\u043d\u0438\u044f",
+    "balance": 993,
+    "price": 3865
+  }
+},
+{
+  "model": "main.product",
+  "pk": 40,
+  "fields": {
+    "title": "\u0412\u0438\u0434\u0435\u043e\u043a\u0430\u0440\u0442\u0430",
+    "balance": 376,
+    "price": 4555
+  }
+},
+{
+  "model": "main.product",
+  "pk": 41,
+  "fields": {
+    "title": "\u041f\u0440\u043e\u0446\u0435\u0441\u0441\u043e\u0440",
+    "balance": 372,
+    "price": 741
+  }
+},
+{
+  "model": "main.product",
+  "pk": 42,
+  "fields": {
+    "title": "\u041e\u043f\u0435\u0440\u0430\u0442\u0438\u0432\u043d\u0430\u044f \u043f\u0430\u043c\u044f\u0442\u044c",
+    "balance": 262,
+    "price": 1097
+  }
+},
+{
+  "model": "main.order",
+  "pk": 172,
+  "fields": {
+    "client": 49,
+    "product": 37,
+    "count": 13
+  }
+},
+{
+  "model": "main.order",
+  "pk": 173,
+  "fields": {
+    "client": 43,
+    "product": 40,
+    "count": 10
+  }
+},
+{
+  "model": "main.order",
+  "pk": 174,
+  "fields": {
+    "client": 48,
+    "product": 38,
+    "count": 2
+  }
+},
+{
+  "model": "main.order",
+  "pk": 175,
+  "fields": {
+    "client": 43,
+    "product": 39,
+    "count": 5
+  }
+},
+{
+  "model": "main.order",
+  "pk": 176,
+  "fields": {
+    "client": 45,
+    "product": 42,
+    "count": 1
+  }
+},
+{
+  "model": "main.order",
+  "pk": 177,
+  "fields": {
+    "client": 49,
+    "product": 40,
+    "count": 7
+  }
+},
+{
+  "model": "main.order",
+  "pk": 178,
+  "fields": {
+    "client": 46,
+    "product": 40,
+    "count": 7
+  }
+},
+{
+  "model": "main.order",
+  "pk": 179,
+  "fields": {
+    "client": 45,
+    "product": 42,
+    "count": 5
+  }
+},
+{
+  "model": "main.order",
+  "pk": 180,
+  "fields": {
+    "client": 44,
+    "product": 38,
+    "count": 11
+  }
+},
+{
+  "model": "main.order",
+  "pk": 181,
+  "fields": {
+    "client": 45,
+    "product": 41,
+    "count": 5
+  }
+},
+{
+  "model": "main.order",
+  "pk": 182,
+  "fields": {
+    "client": 46,
+    "product": 38,
+    "count": 7
+  }
+},
+{
+  "model": "main.order",
+  "pk": 183,
+  "fields": {
+    "client": 45,
+    "product": 39,
+    "count": 1
+  }
+},
+{
+  "model": "main.order",
+  "pk": 184,
+  "fields": {
+    "client": 47,
+    "product": 38,
+    "count": 15
+  }
+},
+{
+  "model": "main.order",
+  "pk": 185,
+  "fields": {
+    "client": 44,
+    "product": 39,
+    "count": 8
+  }
+},
+{
+  "model": "main.order",
+  "pk": 186,
+  "fields": {
+    "client": 47,
+    "product": 39,
+    "count": 7
+  }
+},
+{
+  "model": "main.order",
+  "pk": 187,
+  "fields": {
+    "client": 45,
+    "product": 42,
+    "count": 5
+  }
+},
+{
+  "model": "main.order",
+  "pk": 188,
+  "fields": {
+    "client": 49,
+    "product": 41,
+    "count": 11
+  }
+},
+{
+  "model": "main.order",
+  "pk": 189,
+  "fields": {
+    "client": 49,
+    "product": 40,
+    "count": 13
+  }
+},
+{
+  "model": "main.order",
+  "pk": 190,
+  "fields": {
+    "client": 43,
+    "product": 39,
+    "count": 2
+  }
+},
+{
+  "model": "main.order",
+  "pk": 191,
+  "fields": {
+    "client": 47,
+    "product": 40,
+    "count": 11
+  }
+},
+{
+  "model": "main.order",
+  "pk": 192,
+  "fields": {
+    "client": 46,
+    "product": 38,
+    "count": 11
+  }
+},
+{
+  "model": "main.order",
+  "pk": 193,
+  "fields": {
+    "client": 45,
+    "product": 37,
+    "count": 9
+  }
+},
+{
+  "model": "main.order",
+  "pk": 194,
+  "fields": {
+    "client": 46,
+    "product": 37,
+    "count": 4
+  }
+},
+{
+  "model": "main.order",
+  "pk": 195,
+  "fields": {
+    "client": 47,
+    "product": 38,
+    "count": 13
+  }
+},
+{
+  "model": "main.order",
+  "pk": 196,
+  "fields": {
+    "client": 49,
+    "product": 40,
+    "count": 8
+  }
+},
+{
+  "model": "main.order",
+  "pk": 197,
+  "fields": {
+    "client": 43,
+    "product": 41,
+    "count": 15
+  }
+},
+{
+  "model": "main.order",
+  "pk": 198,
+  "fields": {
+    "client": 47,
+    "product": 37,
+    "count": 3
+  }
+},
+{
+  "model": "main.order",
+  "pk": 199,
+  "fields": {
+    "client": 47,
+    "product": 40,
+    "count": 14
+  }
+},
+{
+  "model": "main.order",
+  "pk": 200,
+  "fields": {
+    "client": 45,
+    "product": 37,
+    "count": 13
+  }
+},
+{
+  "model": "main.order",
+  "pk": 201,
+  "fields": {
+    "client": 49,
+    "product": 38,
+    "count": 13
+  }
+}
+]
