@@ -1,0 +1,76 @@
+{% extends 'layout/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <style>
+        .modal_div {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(200, 200, 200, 0.6);
+        }
+
+        .modal_div .modal_content_div {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 2px solid #3d7dc8;
+            border-radius: 5px;
+            width: 40%;
+            z-index: 2;
+        }
+
+        #close_element {
+            float: right;
+            color: white;
+            font-weight: bold;
+            background: #3d7dc8;
+            padding: 5px;
+            border-radius: 2px;
+            cursor: context-menu;
+        }
+    </style>
+    <div class='basic_block'>
+        <button id='btn_modal_window'>Открыть модальное окно</button>
+        <div id='modal_window' class='modal_div'>
+            <div class='modal_content_div'>
+                <span id='close_element'>X</span>
+                <br>
+                <p>
+                    Содержимое модального окна, представленное в виде абзаца простого текста.
+                    Какой-то информационно-смысловой нагрузки оно не несёт. Его функция сводится к
+                    простой демонстрации работы модальных окон и принципиальной простоты их создания
+                    и использования.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let modal = document.getElementById('modal_window');
+        let btn = document.getElementById('btn_modal_window');
+        let span = document.getElementById('close_element');
+
+        //Функция открывает модальное окно
+        btn.onclick = function () {
+            modal.style.display = 'block';
+        };
+
+        //Функция закрывает модальное окно при щелчке покнопке закрытия
+        span.onclick = function () {
+            modal.style.display = 'none';
+        };
+
+        //Функция закрывает модальное окно при щелчке по области за его границами
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+{% endblock %}

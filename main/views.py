@@ -113,3 +113,7 @@ def simple_rest_report(request):
 
 def inline_block_demo(request):
     return render(request, 'main/inline_block_demo.html', context={})
+
+
+def modal_demo(request):
+    return render(request, 'main/modal_demo.html', context={})
