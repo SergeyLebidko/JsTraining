@@ -50,3 +50,11 @@ class Order(models.Model):
         verbose_name_plural = 'Заказы'
         ordering = ['client', 'product']
 
+
+class Storage(models.Model):
+    title = models.TextField(verbose_name='Описание файла')
+    pdf_file = models.FileField(verbose_name='Прикрепленный файл')
+
+    class Meta:
+        verbose_name = 'Документ'
+        verbose_name = 'Документы'
