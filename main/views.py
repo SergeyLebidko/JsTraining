@@ -4,6 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from django.http import HttpResponse, HttpResponseNotAllowed
+from django.template.response import TemplateResponse
 from django.template.loader import get_template
 from django.db.models import Sum, F
 
@@ -117,3 +118,7 @@ def inline_block_demo(request):
 
 def modal_demo(request):
     return render(request, 'main/modal_demo.html', context={})
+
+
+def simple_template(request):
+    return TemplateResponse(request, 'main/simple_template.html', context={})

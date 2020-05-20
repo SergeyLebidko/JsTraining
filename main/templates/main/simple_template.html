@@ -1,0 +1,14 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+    <div class="basic_block">
+        <p>
+            Простой шаблон для иллюстрации работы классов-посредников<br>
+            Данные для списка ниже предоставлены посредниками (их методами process_template_response)
+            <ul>
+                <li>{{ first_mid_name }}</li>
+                <li>{{ second_mid_name }}</li>
+            </ul>
+        </p>
+    </div>
+{% endblock %}
