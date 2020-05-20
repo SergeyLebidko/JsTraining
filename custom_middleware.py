@@ -7,7 +7,7 @@ class FirstCustomMiddleware(MiddlewareMixin):
         print(f'Вызван process_request {self.__class__.__name__}')
 
     def process_view(self, request, view, *args, **kwargs):
-        print(f'Вызван process_view {self.__class__.__name__}')
+        print(f'Вызван process_view {self.__class__.__name__}. View {view}')
 
     def process_exception(self, request, exception):
         print(f'Вызван process_exception {self.__class__.__name__}')
@@ -28,7 +28,7 @@ class SecondCustomMiddleware(MiddlewareMixin):
         print(f'Вызван process_request {self.__class__.__name__}')
 
     def process_view(self, request, view, *args, **kwargs):
-        print(f'Вызван process_view {self.__class__.__name__}')
+        print(f'Вызван process_view {self.__class__.__name__}. View {view}')
 
     def process_exception(self, request, exception):
         print(f'Вызван process_exception {self.__class__.__name__}')
