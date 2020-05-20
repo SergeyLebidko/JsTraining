@@ -7,7 +7,7 @@ class FirstCustomMiddleware(MiddlewareMixin):
         print(f'Вызван process_request {self.__class__.__name__}')
 
     def process_view(self, request, view, *args, **kwargs):
-        print(f'Вызван process_view {self.__class__.__name__}. View {view}')
+        print(f'Вызван process_view {self.__class__.__name__}. View {view.__name__}')
 
     def process_exception(self, request, exception):
         print(f'Вызван process_exception {self.__class__.__name__}')
@@ -28,7 +28,7 @@ class SecondCustomMiddleware(MiddlewareMixin):
         print(f'Вызван process_request {self.__class__.__name__}')
 
     def process_view(self, request, view, *args, **kwargs):
-        print(f'Вызван process_view {self.__class__.__name__}. View {view}')
+        print(f'Вызван process_view {self.__class__.__name__}. View {view.__name__}')
 
     def process_exception(self, request, exception):
         print(f'Вызван process_exception {self.__class__.__name__}')
@@ -41,3 +41,14 @@ class SecondCustomMiddleware(MiddlewareMixin):
     def process_response(self, request, response):
         print(f'Вызван process_response {self.__class__.__name__}. Тип response {type(response)}')
         return response
+
+
+def func_middleware(get_response):
+
+    def mid(request):
+        print('Внутри посредника-функции до получения response')
+        response = get_response(request)
+        print('Внутри посредника-функции после получения response')
+        return response
+
+    return mid
