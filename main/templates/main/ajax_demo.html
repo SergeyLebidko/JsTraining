@@ -1,0 +1,43 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+    <div class="basic_block">
+        <p>
+            <a href="javascript:postDemo()">Проверка метода POST</a>
+            <br><br>
+            <a href="javascript:getDemo()">Проверка метода GET</a>
+        </p>
+    </div>
+    <div class="basic_block" id="resultBlock">
+        <p>
+            Блок результатов
+        </p>
+    </div>
+
+    <script>
+        function postDemo() {
+            $.ajax(
+                {
+                    'url': 'ajax_request/',
+                    'type': 'POST'
+                }
+            ).done(appendAnswer)
+        }
+
+        function getDemo() {
+            $.ajax(
+                {
+                    'url': 'ajax_request/',
+                    'type': 'GET'
+                }
+            ).done(appendAnswer)
+        }
+
+        function appendAnswer(answer) {
+            let resultBlock = document.getElementById('resultBlock');
+            let nextResult = document.createElement('p');
+            nextResult.innerText = answer;
+            resultBlock.append(nextResult)
+        }
+    </script>
+{% endblock %}

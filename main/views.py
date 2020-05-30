@@ -7,6 +7,8 @@ from django.http import HttpResponse, HttpResponseNotAllowed
 from django.template.response import TemplateResponse
 from django.template.loader import get_template
 from django.db.models import Sum, F
+from django.views.decorators.csrf import csrf_exempt
+from datetime import datetime
 
 
 stat_counter = 0
@@ -122,3 +124,13 @@ def modal_demo(request):
 
 def simple_template(request):
     return TemplateResponse(request, 'main/simple_template.html', context={})
+
+
+def ajax_demo(request):
+    return render(request, 'main/ajax_demo.html', context={})
+
+
+@csrf_exempt
+def ajax_request(request):
+    msg = f'{str(datetime.now())[:19]}. Пришел запрос с методом: {request.method}'
+    return HttpResponse(msg)
