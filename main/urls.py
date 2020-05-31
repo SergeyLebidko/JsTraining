@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import index, report_1, report_2, simple_rest_report, simple_html_report, add_order, \
-    inline_block_demo, modal_demo, simple_template, ajax_demo, ajax_request
+    inline_block_demo, modal_demo, simple_template, ajax_demo, ajax_request, dom_demo
 
 
 urlpatterns = [
@@ -14,5 +14,6 @@ urlpatterns = [
     path('modal_demo/', modal_demo, name='modal_demo'),
     path('simple_template/', simple_template, name='simple_template'),
     path('ajax_demo/', ajax_demo, name='ajax_demo'),
-    path('ajax_demo/ajax_request/', ajax_request, name='ajax_request')
+    path('ajax_demo/ajax_request/', ajax_request, name='ajax_request'),
+    path('dom_demo/', dom_demo, name='dom_demo')
 ]

@@ -1,0 +1,84 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+    <style>
+        p {
+            border: solid 1px #c8c8c8;
+            border-radius: 3px;
+            padding: 10px;
+            background-color: bisque;
+        }
+
+        .replacing {
+            border: solid 1px #c8c8c8;
+            border-radius: 3px;
+            padding: 10px;
+            background-color: #fa7878;
+        }
+    </style>
+
+    <div class="basic_block">
+        <a href="javascript:beforeMethod()">.before</a>
+        <a href="javascript:afterMethod()">.after</a>
+        <a href="javascript:prependMethod()">.prepend</a>
+        <a href="javascript:appendMethod()">.append</a>
+        |
+        <a href="javascript:replaceWithMethod()">.replaceWith</a>
+        <a href="javascript:innerHTMLMethod()">.innerHTML</a>
+    </div>
+
+    <div class="basic_block" id="outer_block">
+        <div class="basic_block" id="inner_block">
+            <p>
+                Небольшой абзац текста, вставленный во внутренний блок
+            </p>
+        </div>
+    </div>
+
+    <script>
+        innerBlock = document.getElementById('inner_block');
+
+        function beforeMethod() {
+            let elementForInsert = document.createElement('p');
+            elementForInsert.textContent = 'Абзац перед внутренним блоком';
+            innerBlock.before(elementForInsert)
+        }
+
+        function afterMethod() {
+            let elementForInsert = document.createElement('p');
+            elementForInsert.textContent = 'Абзац после внутреннего блока';
+            innerBlock.after(elementForInsert)
+        }
+
+        function prependMethod() {
+            let elementForInsert = document.createElement('p');
+            elementForInsert.textContent = 'Абзац в начале внутреннего блока';
+            innerBlock.prepend(elementForInsert)
+        }
+
+        function appendMethod() {
+            let elementForInsert = document.createElement('p');
+            elementForInsert.textContent = 'Абзац в конце внутреннего блока';
+            innerBlock.append(elementForInsert)
+        }
+
+        function replaceWithMethod() {
+            let elementForReplace = document.createElement('p');
+            elementForReplace.textContent = 'Заменивший элемент';
+            elementForReplace.className = 'replacing';
+            innerBlock.replaceWith(elementForReplace);
+            innerBlock = elementForReplace
+        }
+
+        function innerHTMLMethod() {
+            let elementForReplace = document.createElement('p');
+            let html = "<h4>Таблица, вставленная с помощью innerHTML</h4>";
+            html += "<table>";
+            html += "<tr><td>Первый</td><td>Второй</td></tr>";
+            html += "<tr><td>Третий</td><td>Четвертый</td></tr>";
+            html += "</table>";
+            innerBlock.innerHTML = html
+        }
+    </script>
+
+{% endblock %}

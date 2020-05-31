@@ -134,3 +134,8 @@ def ajax_demo(request):
 def ajax_request(request):
     msg = f'{str(datetime.now())[:19]}. Пришел запрос с методом: {request.method}'
     return HttpResponse(msg)
+
+
+def dom_demo(request):
+    context = {}
+    return render(request, 'main/dom_demo.html', context=context)
