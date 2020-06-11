@@ -1,10 +1,15 @@
 import random
 import requests
 import string
-from Crypto.Cipher import AES
 from main.models import Storage
 from django.core.management.base import BaseCommand
 from django.core.files.base import ContentFile
+
+from Crypto.Cipher import AES
+from Crypto import Random
+
+
+BLOCK_SIZE = 16
 
 
 def get_key():
@@ -29,10 +34,13 @@ class Command(BaseCommand):
         data = response.content
 
         print('Шифрую скачанный файл...')
+
         key = get_key()
-        aes = AES.new(key)
-        data = data + b'\x00' * (16 - len(data) % 16)
-        encrypted_data = aes.encrypt(data)
+        iv = Random.get_random_bytes(BLOCK_SIZE)
+        aes = AES.new(key, AES.MODE_CBC, iv, block_size=BLOCK_SIZE)
+        length = BLOCK_SIZE - (len(data) % BLOCK_SIZE)
+        data += bytes([length]) * length
+        encrypted_data = iv + aes.encrypt(data)
 
         print('Сохраняю скачанный файл в БД...')
         storage = Storage()
@@ -46,7 +54,14 @@ class Command(BaseCommand):
         print('Расшифровываю и сохраняю файл из БД на диск...')
         with open('pdf_demo_decrypted.pdf', 'wb') as file:
             encrypted_file_data = storage.pdf_file.read()
+
+            iv = encrypted_data[:BLOCK_SIZE]
+            aes = AES.new(key, AES.MODE_CBC, iv, block_size=BLOCK_SIZE)
             decrypted_file_data = aes.decrypt(encrypted_file_data)
+
+            ender_byte = decrypted_file_data[-1]
+            decrypted_file_data = decrypted_file_data[:-ender_byte]
+
             file.write(decrypted_file_data)
 
         print('Операции завершены...')
