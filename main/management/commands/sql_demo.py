@@ -98,7 +98,7 @@ def report_2():
     show_results(
         cursor,
         description='Клиенты, у которых кредитный лимит между 5000 и 9000:',
-        columns='Идентификатор Клиент Кредитный_лимит VIP-статус'.split(),
+        columns='ИДЕНТИФИКАТОР КЛИЕНТ КРЕДИТНЫЙ ЛИМИТ VIP-СТАТУС'.split(),
         fill_count=15
     )
     cursor.close()
@@ -118,7 +118,7 @@ def report_3():
     show_results(
         cursor,
         description='Клиент и количество его заказов:',
-        columns='Клиент Сделано_заказов'.split(),
+        columns='КЛИЕНТ СДЕЛАНО_ЗАКАЗОВ'.split(),
         fill_count=15
     )
     cursor.close()
@@ -144,17 +144,58 @@ def remove_test_client():
     print('\nУдален тестовый клиент...\n')
 
 
+def clients_video_report():
+    # Клиент, заказавший больше всего видеокарт
+    cursor = get_new_cursor()
+    cursor.execute(
+        """SELECT mc.title, SUM(mo.count) AS total_video
+           FROM main_client mc JOIN main_order mo on mc.id = mo.client_id
+           JOIN main_product mp on mo.product_id = mp.id
+           WHERE mp.title = 'Видеокарта'
+           GROUP BY mc.title
+           ORDER BY total_video DESC 
+           LIMIT 1
+        """
+    )
+    show_results(
+        cursor,
+        description='Клиент, заказавший наибольшее количество видеокарт:',
+        columns='КЛИЕНТ ЗАКАЗАНО_ВИДЕОКАРТ'.split(),
+        fill_count=15
+    )
+    cursor.close()
+
+
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        add_test_client()
-        client_list()
-        product_list()
-        order_list()
-        report_1()
-        report_2()
-        report_3()
+        # Добавляем тестового клиента
+        # add_test_client()
 
-        remove_test_client()
-        client_list()
+        # Выводим список клиентов
+        # client_list()
+
+        # Выводим список товаров
+        # product_list()
+
+        # Выводим список заказов
+        order_list()
+
+        # Количество заказанного товара по каждому клиенту
+        report_1()
+
+        # Клиенты, у которых кредитный лимит между 5000 и 9000
+        # report_2()
+
+        # Клиент и количество его заказов
+        # report_3()
+
+        # Удаляем тестового клиента
+        # remove_test_client()
+
+        # Снова выводим список клиентов
+        # client_list()
+
+        # Клиент, заказавший больше всего видеокарт
+        clients_video_report()
