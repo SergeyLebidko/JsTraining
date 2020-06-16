@@ -124,6 +124,44 @@ def report_3():
     cursor.close()
 
 
+def report_4():
+    # Товары, по которым заказано больше едениц, чем есть на складе
+    cursor = get_new_cursor()
+    cursor.execute(
+        """SELECT main_product.title
+           FROM main_product
+           WHERE main_product.balance < (SELECT SUM(main_order.count) 
+                                         FROM main_order
+                                         WHERE main_order.product_id = main_product.id)
+        """
+    )
+    show_results(
+        cursor,
+        description='Товары, по которым заказано больше едениц, чем есть на складе:',
+        columns='ТОВАР'.split(),
+        fill_count=15
+    )
+    cursor.close()
+
+
+def report_5():
+    # Общее количество заказанного товара и его остатки на складе
+    cursor = get_new_cursor()
+    cursor.execute(
+        """SELECT main_product.title, main_product.balance, SUM(main_order.count)
+           FROM main_order JOIN main_product ON main_order.product_id = main_product.id
+           GROUP BY main_product.title
+        """
+    )
+    show_results(
+        cursor,
+        description='Товары, по которым заказано больше едениц, чем есть на складе:',
+        columns='ТОВАР ОСТАТОК ЗАКАЗАНО'.split(),
+        fill_count=15
+    )
+    cursor.close()
+
+
 def add_test_client():
     # Добавляем нового клиента
     data = {
@@ -177,13 +215,13 @@ class Command(BaseCommand):
         # client_list()
 
         # Выводим список товаров
-        # product_list()
+        product_list()
 
         # Выводим список заказов
         order_list()
 
         # Количество заказанного товара по каждому клиенту
-        report_1()
+        # report_1()
 
         # Клиенты, у которых кредитный лимит между 5000 и 9000
         # report_2()
@@ -198,4 +236,10 @@ class Command(BaseCommand):
         # client_list()
 
         # Клиент, заказавший больше всего видеокарт
-        clients_video_report()
+        # clients_video_report()
+
+        # Товары, по которым заказано больше едениц, чем есть на складе
+        report_4()
+
+        # Общее количество заказанного товара и его остатки на складе
+        report_5()

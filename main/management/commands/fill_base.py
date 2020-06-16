@@ -30,7 +30,7 @@ class Command(BaseCommand):
         for product_title in product_titles:
             Product.objects.create(
                 title=product_title,
-                balance=random.randint(100, 1000),
+                balance=random.randint(10, 100),
                 price=random.randint(500, 5000)
             )
 
@@ -43,7 +43,7 @@ class Command(BaseCommand):
             Order.objects.create(
                 client=client,
                 product=product,
-                count=random.randint(1, 15)
+                count=random.randint(1, 20)
             )
 
         print('Заполнение завершено...')
