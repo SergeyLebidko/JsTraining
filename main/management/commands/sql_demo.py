@@ -130,7 +130,7 @@ def report_4():
     cursor.execute(
         """SELECT main_product.title
            FROM main_product
-           WHERE main_product.balance < (SELECT SUM(main_order.count) 
+           WHERE main_product.balance < (SELECT SUM(main_order.count)
                                          FROM main_order
                                          WHERE main_order.product_id = main_product.id)
         """
@@ -155,7 +155,7 @@ def report_5():
     )
     show_results(
         cursor,
-        description='Товары, по которым заказано больше едениц, чем есть на складе:',
+        description='Общее количество заказанного товара и его остатки на складе:',
         columns='ТОВАР ОСТАТОК ЗАКАЗАНО'.split(),
         fill_count=15
     )
